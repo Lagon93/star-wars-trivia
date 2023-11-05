@@ -80,11 +80,8 @@ function loadQuestion() {
 
         // Agrega el elemento de lista a la lista desordenada
         answersElement.appendChild(listItem);
-    });
-    setTimeout(() => {
-        const preguntaElement = document.querySelector('.preg-cambiar-fuente');
-        preguntaElement.classList.add('preg-cambiar-fuente');
-    }, 1000);
+    })
+
 }
 
 
