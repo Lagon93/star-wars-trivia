@@ -5,18 +5,9 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="game-container">
-        <img class="logo" src="img/emp.png" alt="Star Wars Trivia">
-        <div class="question-container">
-            <p id="question">¿Pregunta de ejemplo?</p>
-            <ul id="answers">
-                <li class="answer"><button onclick="checkAnswer(0)">Respuesta 1</button></li>
-                <li class="answer"><button onclick="checkAnswer(1)">Respuesta 2</button></li>
-                <li class="answer"><button onclick="checkAnswer(2)">Respuesta 3</button></li>
-                <li class="answer"><button onclick="checkAnswer(3)">Respuesta 4</button></li>
-            </ul>
-        </div>
-        <div id="result"></div>
+    <div class="start-container">
+        <img id="startI" src="img/emp.png" alt="Imagen de Star Wars">
+        <button id="startB" onclick="startGame()">Empezar</button>
     </div>
     <script src="script.js"></script>
 </body>

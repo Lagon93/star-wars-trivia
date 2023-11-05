@@ -36,6 +36,18 @@ body {
     /* Otros atributos opcionales, como weight y style, si es necesario */
 }
 
+.start-container {
+    background-image: url('img/bg.webp'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .logo {
     height: auto;
     width: 15rem;
@@ -70,6 +82,7 @@ body {
     transition: font-family 1s ease; /* Transición de la fuente */
     font-size: 6rem;
     color: white;
+    font-stretch: expanded;
     text-shadow: rgb(100, 3, 3) 2px 0 10px;}
 
 
@@ -102,4 +115,16 @@ display: flex;
 flex-direction: row;
 align-items: center;
 cursor: pointer;
+}
+
+#startB{
+    margin: 4rem;
+    text-align: center;
+    font-size: 7rem;
+    font-family: 'SWfont', sans-serif;
+    font-stretch: expanded;
+}
+
+#startI{
+    filter: drop-shadow(10px 10px 5px #222);
 }

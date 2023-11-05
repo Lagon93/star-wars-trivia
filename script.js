@@ -55,6 +55,9 @@ const questions = [
 let currentQuestion = 0;
 let score = 0;
 
+function startGame() {
+    window.location.href = 'trivia.html'; // Reemplaza 'trivia.html' con la ruta correcta a tu página de preguntas
+}
 
 
 function loadQuestion() {
@@ -95,7 +98,7 @@ function checkAnswer(index) {
 
     if (index === correctIndex) {
         score++;
-        answerButtons[index].style.backgroundColor = "green";
+        answerButtons[index].style.backgroundColor = "rgba(86, 238, 138, 0.48)";
 
         const nextButton = document.createElement("button");
         nextButton.textContent = "Siguiente Pregunta";
@@ -111,7 +114,7 @@ function checkAnswer(index) {
 
         document.querySelector(".question-container").appendChild(nextButton);
     } else {
-        answerButtons[index].style.backgroundColor = "red";
+        answerButtons[index].style.backgroundColor = " rgba(255, 61, 56, 0.48)";
 
         const retryButton = document.createElement("button");
         retryButton.textContent = "Volver a Intentar";
