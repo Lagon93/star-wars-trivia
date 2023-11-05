@@ -1,0 +1,87 @@
+
+/* Estilos para dispositivos móviles (primeros) */
+body {
+    font-size: 3.5rem;; /* Aumento el tamaño de fuente en rem para dispositivos móviles */
+    background-color: #f0f0f0;
+    padding: 1.25rem;
+    background-image: url('img/bg.webp'); /* Ajusta la ruta de la imagen según la ubicación real */
+    background-size: cover; /* Ajusta el tamaño de la imagen de fondo */
+    background-position: center center; /* Ajusta la posición de la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que se repita la imagen de fondo */
+}
+
+/* Media query para tabletas */
+@media (min-width: 48rem) {
+    body {
+        font-size: 4rem; /* Aumento el tamaño de fuente en rem para tabletas */
+    }
+}
+
+/* Media query para pantallas más grandes (desktop) */
+@media (min-width: 64rem) {
+    body {
+        font-size: 4.5rem; /* Aumento el tamaño de fuente en rem para pantallas más grandes */
+    }
+}
+
+@font-face {
+    font-family: 'SWfont'; /* Nombre de la fuente personalizada */
+    src: url('font/clonewars2.ttf') format('truetype'); /* Ruta de la fuente en línea y formato */
+    /* Otros atributos opcionales, como weight y style, si es necesario */
+}
+
+.logo {
+    height: auto;
+    width: 15rem;
+    margin-bottom:2rem;
+}
+.game-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 10rem;
+    margin-bottom: 20rem;
+}
+
+
+
+.question-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem; /* Aumento el espacio interno en rem */
+    background-color: #a5363218;
+    border: 0.125rem solid #ccc; /* Usando rem */
+    border-radius: 0.625rem; /* Usando rem */
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.question-container p {
+    font-family: 'SWfont', sans-serif; /* Aplicar la fuente personalizada y una fuente de respaldo */
+    color: white;
+    font-size: 6rem;
+}
+
+.question-container ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.question-container button {
+    width: 85%;
+    margin: 4rem;
+    padding: 2rem;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 4rem;
+}
+
+/* Estilos para botones de "Siguiente Pregunta" y "Volver a Intentar" se agregarán dinámicamente */
