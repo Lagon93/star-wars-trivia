@@ -1,56 +1,56 @@
 const questions = [
     {
-        question: "¿Quien interpreta a Luke Skywalker en Star Wars?",
-        answers: ["Harrison Ford", "Mark Hamill", "Carrie Fisher", "Alec Guinness"],
+        question: "Qui va ser l'aprenent Sith de Darth Sidious?",
+        answers: ["Darth Maul", "Darth Vader", "Darth Tyranus", "Darth Plagueis"],
+        correct: 0
+    },
+    {
+        question: "En quin planeta va néixer l'Emperador Palpatine?",
+        answers: ["Coruscant", "Tatooine", "Naboo", "Mustafar"],
+        correct: 2
+    },
+    {
+        question: "Quin és el nom del Sith que es va convertir en Darth Bane i va establir la 'Regla de Dos'?",
+        answers: ["Darth Malak", "Darth Revan", "Darth Sion", "Darth Des"],
         correct: 1
     },
     {
-        question: "¿Cuál es el nombre completo de Darth Vader?",
-        answers: ["Anakin Skywalker", "Luke Skywalker", "Obi-Wan Kenobi", "Han Solo"],
-        correct: 0
-    },
-    {
-        question: "¿Cuál es el nombre del planeta natal de Chewbacca?",
-        answers: ["Endor", "Tatooine", "Kashyyyk", "Hoth"],
-        correct: 2
-    },
-    {
-        question: "¿En qué película de Star Wars aparece el personaje Yoda por primera vez?",
-        answers: ["El Imperio Contraataca", "La Amenaza Fantasma", "El Retorno del Jedi", "Una Nueva Esperanza"],
-        correct: 0
-    },
-    {
-        question: "¿Qué sable de luz de Star Wars tiene un color rojo característico?",
-        answers: ["Sable de luz de Luke Skywalker", "Sable de luz de Obi-Wan Kenobi", "Sable de luz de Darth Vader", "Sable de luz de Yoda"],
-        correct: 2
-    },
-    {
-        question: "¿Quién es el co-piloto del Halcón Milenario?",
-        answers: ["Princesa Leia", "C-3PO", "R2-D2", "Chewbacca"],
+        question: "Quin Lord Sith va governar la Galàxia durant el període de la 'Gran Purga Jedi'?",
+        answers: ["Darth Malgus", "Darth Nihilus", "Darth Tenebrous", "Darth Sidious"],
         correct: 3
     },
     {
-        question: "¿Qué arma es capaz de destruir un planeta entero en Star Wars?",
-        answers: ["Bláster", "Lanzallamas", "Sable de luz", "Estación Espacial de Combate"],
+        question: "Com es diu el líder dels Inquisidors, que caçava els Jedi supervivents després de l'Ordre 66?",
+        answers: ["Darth Talon", "Darth Nihl", "Darth Traya", "Darth Vader"],
+        correct: 1
+    },
+    {
+        question: "Quin és el nom del Sith conegut per ser el 'Senyor dels Sith' a la sèrie de còmics 'Legends'?",
+        answers: ["Darth Bane", "Darth Krayt", "Darth Vader", "Darth Malgus"],
+        correct: 1
+    },
+    {
+        question: "Quin és el nom de la batalla en què l'Imperi va destruir la base rebel a Hoth a 'El Imperi Contraataca'?",
+        answers: ["Batalla de Jakku", "Batalla d'Endor", "Batalla de Yavin", "Batalla de Hoth"],
         correct: 3
     },
     {
-        question: "¿Quién es el líder de la Alianza Rebelde en Star Wars?",
-        answers: ["Darth Vader", "El Emperador Palpatine", "Yoda", "Princesa Leia"],
-        correct: 3
-    },
-    {
-        question: "¿Qué cazarrecompensas es conocido por su casco mandaloriano en Star Wars?",
-        answers: ["Boba Fett", "IG-88", "Dengar", "Bossk"],
+        question: "Quin és el nom del planeta natal de Darth Maul?",
+        answers: ["Dathomir", "Korriban", "Lothal", "Eriadu"],
         correct: 0
     },
     {
-        question: "¿En qué película de Star Wars se destruye la primera Estrella de la Muerte?",
-        answers: ["La Amenaza Fantasma", "El Imperio Contraataca", "Una Nueva Esperanza", "El Retorno del Jedi"],
-        correct: 2
+        question: "En quina pel·lícula de Star Wars apareix el planeta Exegol?",
+        answers: ["El Imperi Contraataca", "El Retorn del Jedi", "L'Amenaça Fantasma", "L'Ascens de Skywalker"],
+        correct: 3
+    },
+    {
+        question: "Quin és el nom del famós sable de llum Sith amb una empunyadura creuada?",
+        answers: ["Sable de llum de Darth Tyranus", "Sable de llum de Darth Vader", "Sable de llum de Darth Sidious", "Sable de llum de Darth Maul"],
+        correct: 3
     }
-        // Agrega más preguntas aquí
 ];
+
 
 let currentQuestion = 0;
 let score = 0;
