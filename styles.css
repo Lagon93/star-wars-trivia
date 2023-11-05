@@ -30,6 +30,12 @@ body {
     /* Otros atributos opcionales, como weight y style, si es necesario */
 }
 
+@font-face {
+    font-family: 'SWfont2'; /* Nombre de la fuente personalizada */
+    src: url("font/KyberCrystalDisplay-Aurebesh.otf") format('opentype'); /* Ruta de la fuente en línea y formato */
+    /* Otros atributos opcionales, como weight y style, si es necesario */
+}
+
 .logo {
     height: auto;
     width: 15rem;
@@ -60,10 +66,17 @@ body {
 }
 
 .question-container p {
-    font-family: 'SWfont', sans-serif; /* Aplicar la fuente personalizada y una fuente de respaldo */
+    font-family: 'SWfont2', sans-serif; /* Aplicar la fuente personalizada y una fuente de respaldo */
     color: white;
     font-size: 6rem;
 }
+
+.question-container.preg-cambiar-fuente p {
+    font-family: 'SWfont', sans-serif;
+    font-size: 6rem; /* Aumentar o disminuir el tamaño de fuente según tus preferencias */
+    transition: font-size 1s ease; /* Utiliza 'font-size' en lugar de 'font' */
+}
+
 
 .question-container ul {
     list-style: none;

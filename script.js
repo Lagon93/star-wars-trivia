@@ -55,6 +55,8 @@ const questions = [
 let currentQuestion = 0;
 let score = 0;
 
+
+
 function loadQuestion() {
     const questionElement = document.querySelector(".question-container p");
     const answersElement = document.querySelector(".question-container ul");
@@ -79,7 +81,12 @@ function loadQuestion() {
         // Agrega el elemento de lista a la lista desordenada
         answersElement.appendChild(listItem);
     });
+    setTimeout(() => {
+        const preguntaElement = document.querySelector('.preg-cambiar-fuente');
+        preguntaElement.classList.add('preg-cambiar-fuente');
+    }, 1000);
 }
+
 
 function checkAnswer(index) {
     const correctIndex = questions[currentQuestion].correct;
