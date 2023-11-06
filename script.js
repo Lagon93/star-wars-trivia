@@ -1,4 +1,4 @@
-const questions = [
+const preguntasNormales = [
     {
         question: "Qui va ser l'aprenent Sith de Darth Sidious?",
         answers: ["Darth Maul", "Darth Vader", "Darth Tyranus", "Darth Plagueis"],
@@ -51,25 +51,101 @@ const questions = [
     }
 ];
 
+const preguntasDificiles = [
+    {
+        question: "Quin dels següents Sith és conegut com el 'Darth dels Llors Sith' i porta una màscara distintiva?",
+        answers: ["Darth Maul", "Darth Revan", "Darth Plagueis", "Darth Bane"],
+        correct: 1
+    },
+    {
+        question: "Quina antiga arma Sith, que apareix a 'Star Wars: Knights of the Old Republic', va ser capaç de destruir estrelles senceres?",
+        answers: ["Sable làser", "Estrella de la Mort", "Bastó làser Sith", "Súper arma Sith"],
+        correct: 2
+    },
+    {
+        question: "A la sèrie de còmics de Star Wars, quin és el nom del Sith que va assumir el títol de 'Darth Malak'?",
+        answers: ["Darth Nihilus", "Darth Sion", "Darth Traya", "Darth Revan"],
+        correct: 3
+    },
+    {
+        question: "Qui va ser el Lord Sith darrere del Projecte Eclipse en el videojoc 'Star Wars: El Poder de la Força'?",
+        answers: ["Darth Vader", "Darth Sidious", "Darth Plagueis", "Darth Starkiller"],
+        correct: 3
+    },
+    {
+        question: "Quin va ser el planeta d'origen d'Exar Kun, un antic Sith que va desencadenar una guerra galàctica als còmics de Star Wars?",
+        answers: ["Korriban", "Koros Major", "Dromund Kaas", "Ziost"],
+        correct: 1
+    },
+    {
+        question: "Qui es va convertir en el primer Emperador de l'Imperi Galàctic després de la caiguda de Palpatine a 'Star Wars: Llegat'?",
+        answers: ["Cade Skywalker", "Roan Fel", "Carnor Jax", "Jax Pavan"],
+        correct: 1
+    },
+    {
+        question: "Quin Lord Sith, que apareix a les novel·les de Star Wars, va liderar el 'Nou Imperi' després de la Batalla d'Endor?",
+        answers: ["Darth Caedus", "Darth Vectivus", "Darth Krayt", "Darth Plagueis"],
+        correct: 2
+    },
+    {
+        question: "Quin és el nom del Mestre Sith que va entrenar a Darth Bane a la Regla de Dos dels Sith a l'univers expandit?",
+        answers: ["Darth Zannah", "Darth Cognus", "Darth Tenebrous", "Darth Andeddu"],
+        correct: 2
+    },
+    {
+        question: "A 'Star Wars: The Clone Wars', qui és el governant de Mandalore que es converteix en deixeble Sith de Darth Maul?",
+        answers: ["Pre Vizsla", "Bo-Katan Kryze", "Satine Kryze", "Savage Opress"],
+        correct: 3
+    },
+    {
+        question: "Quin és el nom de l'antic Lord Sith que va descobrir el secret per evitar la mort i la immortalitat a l'univers expandit?",
+        answers: ["Darth Traya", "Darth Nihilus", "Darth Sion", "Darth Vitiate"],
+        correct: 3
+    }
+];
+
+
 
 let currentQuestion = 0;
 let score = 0;
 
 function startGame() {
-    window.location.href = 'trivia.html'; // Reemplaza 'trivia.html' con la ruta correcta a tu página de preguntas
+    const difficulty = document.getElementById("difficulty").value;
+    const url = `trivia.html?difficulty=${difficulty}`; // Agrega el parámetro de dificultad a la URL
+    window.location.href = url;
 }
 
+// Obtiene el valor del parámetro 'difficulty' de la URL
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
 
-function loadQuestion() {
+// Obtiene la dificultad seleccionada
+const selectedDifficulty = getURLParameter('difficulty');
+
+// Carga las preguntas correspondientes según la dificultad
+let preguntas;
+
+if (selectedDifficulty === "dificil") {
+    preguntas = preguntasDificiles; // Preguntas difíciles
+} else {
+    preguntas = preguntasNormales; // Preguntas normales
+}
+
+// Llama a la función para iniciar el juego con las preguntas seleccionadas
+loadQuestion(preguntas);
+
+function loadQuestion(preguntas) {
     const questionElement = document.querySelector(".question-container p");
     const answersElement = document.querySelector(".question-container ul");
 
-    questionElement.textContent = questions[currentQuestion].question;
+    questionElement.textContent = preguntas[currentQuestion].question;
 
     // Borra todas las respuestas anteriores
     answersElement.innerHTML = "";
 
-    questions[currentQuestion].answers.forEach((answer, index) => {
+    preguntas[currentQuestion].answers.forEach((answer, index) => {
         // Crea un nuevo elemento de lista (li)
         const listItem = document.createElement("li");
         
