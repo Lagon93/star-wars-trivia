@@ -128,3 +128,30 @@ cursor: pointer;
 #startI{
     filter: drop-shadow(10px 10px 5px #222);
 }
+
+.result-page {
+    background-color: #66585881;
+    text-align: center; /* Centra el contenido */
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.textRes{
+    font-size: 3rem;
+    color: white;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.codenum{
+    font-size: 3rem;
+    color: white;
+    background-color: #222;
+    font-family:  "Courier New", monospace;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.imageRes2{
+    margin-top: 3rem;
+}

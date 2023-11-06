@@ -131,7 +131,7 @@ function checkAnswer(index) {
 
 function showResult() {
     const resultElement = document.getElementById("result");
-    resultElement.textContent = `Puntaje final: ${score} de ${questions.length}`;
+    window.location.href = "resultado.html";
 }
 
 loadQuestion();
