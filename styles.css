@@ -136,10 +136,16 @@ cursor: pointer;
     box-sizing: border-box;
 }
 
-.textRes, .dificultText{
+.textRes{
     font-size: 3rem;
     color: white;
     font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.dificultText{
+font-size: 3rem;
+color: white;
+font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .codenum{

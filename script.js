@@ -53,7 +53,7 @@ const preguntasNormales = [
 
 const preguntasDificiles = [
     {
-        question: "Quin dels següents Sith és conegut com el 'Darth dels Llors Sith' i porta una màscara distintiva?",
+        question: "Quin dels següents Sith és conegut com el 'Darth dels Lors Sith' i porta una màscara distintiva?",
         answers: ["Darth Maul", "Darth Revan", "Darth Plagueis", "Darth Bane"],
         correct: 1
     },
@@ -152,7 +152,7 @@ function loadQuestion(preguntas) {
         // Crea un botón de respuesta y configura su texto y función onclick
         const button = document.createElement("button");
         button.textContent = answer;
-        button.onclick = () => checkAnswer(index);
+        button.onclick = () => checkAnswer(index, preguntas);
 
         // Agrega el botón de respuesta al elemento de lista
         listItem.appendChild(button);
@@ -164,8 +164,8 @@ function loadQuestion(preguntas) {
 }
 
 
-function checkAnswer(index) {
-    const correctIndex = questions[currentQuestion].correct;
+function checkAnswer(index, preguntas) {
+    const correctIndex = preguntas[currentQuestion].correct;
     const answerButtons = document.querySelectorAll(".question-container button");
 
     answerButtons.forEach((button) => {
@@ -176,19 +176,20 @@ function checkAnswer(index) {
         score++;
         answerButtons[index].style.backgroundColor = "rgba(86, 238, 138, 0.48)";
 
-        const nextButton = document.createElement("button");
-        nextButton.textContent = "Siguiente Pregunta";
-        nextButton.onclick = () => {
-            currentQuestion++;
-            if (currentQuestion < questions.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
-            document.querySelector(".question-container").removeChild(nextButton);
-        };
+        // Desactiva el botón de "Siguiente Pregunta" si no quedan más preguntas
+        if (currentQuestion < preguntas.length - 1) {
+            const nextButton = document.createElement("button");
+            nextButton.textContent = "Siguiente Pregunta";
+            nextButton.onclick = () => {
+                currentQuestion++;
+                loadQuestion(preguntas); // Agrega el argumento de preguntas
+                document.querySelector(".question-container").removeChild(nextButton);
+            };
 
-        document.querySelector(".question-container").appendChild(nextButton);
+            document.querySelector(".question-container").appendChild(nextButton);
+        } else {
+            showResult();
+        }
     } else {
         answerButtons[index].style.backgroundColor = " rgba(255, 61, 56, 0.48)";
 
@@ -204,6 +205,7 @@ function checkAnswer(index) {
         document.querySelector(".question-container").appendChild(retryButton);
     }
 }
+
 
 function showResult() {
     const resultElement = document.getElementById("result");
