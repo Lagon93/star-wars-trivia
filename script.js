@@ -213,58 +213,55 @@ function showResult() {
 }
 
 loadQuestion();
+
 const textElement = document.getElementById('animated-text');
 const blinkingIcon = document.createElement('span');
 blinkingIcon.className = 'blinking-icon';
 blinkingIcon.innerHTML = '&#9733;'; // Cambia esto al icono que prefieras
 
-let isTextChanging = false;
-
 const textArray = [
     '¡Bienvenido!',
-    'Haz clic para cambiar el texto.'
+    'Haz clic para cambiar el texto. Esta es una línea larga de texto que debería bajar a la siguiente línea si no cabe en el contenedor.'
 ];
-
-let currentTextIndex = 0;
+var animationInProgress = false;
 
 function animateText() {
-    if (!isTextChanging) {
-        const currentText = textArray[currentTextIndex];
-        isTextChanging = true;
+    if (animationInProgress) return;
 
-        for (let i = 0; i <= currentText.length; i++) {
-            setTimeout(() => {
-                textElement.textContent = currentText.slice(0, i);
+    const currentText = textArray[currentTextIndex];
+    const words = currentText.split(' ');
+    var index = 0;
 
-                if (i === currentText.length) {
-                    setTimeout(() => {
-                        textElement.appendChild(blinkingIcon);
-                    }, 500);
-                }
-            }, 50 * i);
-        }
+    function type() {
+        textElement.textContent = words.slice(0, index).join(' ');
+        index++;
 
-        setTimeout(() => {
-            isTextChanging = false;
-            textElement.innerHTML = currentText; // Mostrar el texto completo
+        if (index <= words.length) {
+            setTimeout(type, 50);
+        } else {
+            textElement.textContent = currentText; // Mostrar el texto completo
             textElement.appendChild(blinkingIcon); // Añadir el icono al final
-        }, 50 * currentText.length + 1000);
+            animationInProgress = false; // Marcar la animación como completa
+        }
     }
+
+    animationInProgress = true; // Marcar que la animación está en progreso
+    type();
 }
 
 function changeText() {
-    if (!isTextChanging) {
-        textElement.innerHTML = ''; // Limpia el contenido antes de cambiar
-        blinkingIcon.remove();
-        animateText();
-    }
-}
+    if (animationInProgress) return; // Evitar cambiar el texto mientras la animación está en progreso
 
-// Detén la animación después de mostrar todo el texto
-function stopAnimation() {
-    textElement.innerHTML = textArray[currentTextIndex];
+    textElement.innerHTML = ''; // Limpia el contenido antes de cambiar
     blinkingIcon.remove();
+    currentTextIndex = (currentTextIndex + 1) % textArray.length;
+    animateText();
 }
 
 // Inicia la animación cuando se carga la página
 window.onload = animateText;
+
+// Detiene la animación cuando el usuario hace clic
+textElement.addEventListener('click', changeText);
+
+
