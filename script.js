@@ -105,7 +105,6 @@ const preguntasDificiles = [
 ];
 
 
-
 let currentQuestion = 0;
 let score = 0;
 
@@ -136,8 +135,16 @@ if (selectedDifficulty === "dificil") {
 // Llama a la función para iniciar el juego con las preguntas seleccionadas
 loadQuestion(preguntas);
 
+
 function loadQuestion(preguntas) {
+
     const questionElement = document.querySelector(".question-container p");
+        // Verifica si el elemento existe antes de intentar acceder a sus propiedades
+        if (questionElement) {
+            questionElement.textContent = preguntas[currentQuestion].question;
+    
+            // Resto de tu código...
+        }
     const answersElement = document.querySelector(".question-container ul");
 
     questionElement.textContent = preguntas[currentQuestion].question;
@@ -212,56 +219,56 @@ function showResult() {
     window.location.href = "resultado.html";
 }
 
-loadQuestion();
+document.addEventListener('DOMContentLoaded', function () {
+    const textElement = document.getElementById('animated-text');
+    const blinkingIcon = document.createElement('span');
+    blinkingIcon.className = 'blinking-icon';
+    blinkingIcon.innerHTML = '&#9733;'; // Cambia esto al icono que prefieras
 
-const textElement = document.getElementById('animated-text');
-const blinkingIcon = document.createElement('span');
-blinkingIcon.className = 'blinking-icon';
-blinkingIcon.innerHTML = '&#9733;'; // Cambia esto al icono que prefieras
+    const textArray = [
+        '¡Bienvenido!',
+        'Haz clic para cambiar el texto. Esta es una línea larga de texto que debería bajar a la siguiente línea si no cabe en el contenedor.'
+    ];
 
-const textArray = [
-    '¡Bienvenido!',
-    'Haz clic para cambiar el texto. Esta es una línea larga de texto que debería bajar a la siguiente línea si no cabe en el contenedor.'
-];
-var animationInProgress = false;
+    var animationInProgress = false;
 
-function animateText() {
-    if (animationInProgress) return;
+    function animateText() {
+        if (animationInProgress) return;
 
-    const currentText = textArray[currentTextIndex];
-    const words = currentText.split(' ');
-    var index = 0;
+        const currentText = textArray[currentTextIndex];
+        const words = currentText.split(' ');
+        let index = 0;
 
-    function type() {
-        textElement.textContent = words.slice(0, index).join(' ');
-        index++;
+        function type() {
+            textElement.textContent = words.slice(0, index).join(' ');
+            index++;
 
-        if (index <= words.length) {
-            setTimeout(type, 50);
-        } else {
-            textElement.textContent = currentText; // Mostrar el texto completo
-            textElement.appendChild(blinkingIcon); // Añadir el icono al final
-            animationInProgress = false; // Marcar la animación como completa
+            if (index <= words.length) {
+                setTimeout(type, 50);
+            } else {
+                textElement.textContent = currentText; // Mostrar el texto completo
+                textElement.appendChild(blinkingIcon); // Añadir el icono al final
+                animationInProgress = false; // Marcar la animación como completa
+            }
         }
+
+        animationInProgress = true; // Marcar que la animación está en progreso
+        type();
     }
 
-    animationInProgress = true; // Marcar que la animación está en progreso
-    type();
-}
+    function changeText() {
+        if (animationInProgress) return; // Evitar cambiar el texto mientras la animación está en progreso
 
-function changeText() {
-    if (animationInProgress) return; // Evitar cambiar el texto mientras la animación está en progreso
+        textElement.innerHTML = ''; // Limpia el contenido antes de cambiar
+        blinkingIcon.remove();
+        currentTextIndex = (currentTextIndex + 1) % textArray.length;
+        animateText();
+    }
 
-    textElement.innerHTML = ''; // Limpia el contenido antes de cambiar
-    blinkingIcon.remove();
-    currentTextIndex = (currentTextIndex + 1) % textArray.length;
+    // Inicia la animación cuando se carga la página
     animateText();
-}
 
-// Inicia la animación cuando se carga la página
-window.onload = animateText;
-
-// Detiene la animación cuando el usuario hace clic
-textElement.addEventListener('click', changeText);
-
+    // Detiene la animación cuando el usuario hace clic
+    textElement.addEventListener('click', changeText);
+});
 
