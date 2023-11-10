@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Trivia de Star Wars</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mobile First Animation</title>
 </head>
 <body>
-    <div class="start-container">
-        <img id="startI" src="img/emp.png" alt="Imagen de Star Wars">
-        <p class="dificultText">Selecciona la dificultad:</p>
-<div class="content-select">
-        <select id="difficulty" class="selectorDif">
-            <option value="normal">Dificultad Normal</option>
-            <option value="dificil">Dificultad Difícil</option>
-        </select><i></i>
+    <div class="container">
+        <img class="stormtrooper" src="img/Sideshow-Stormtrooper-Commander.webp" alt="Stormtrooper Image">
+        <div class="overlay">
+            <p>Texto superpuesto</p>
+        </div>
     </div>
-        <button id="startB" onclick="startGame()">Empezar</button>
-    </div>
-    <script src="script.js"></script>
 </body>
 </html>

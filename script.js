@@ -213,3 +213,58 @@ function showResult() {
 }
 
 loadQuestion();
+const textElement = document.getElementById('animated-text');
+const blinkingIcon = document.createElement('span');
+blinkingIcon.className = 'blinking-icon';
+blinkingIcon.innerHTML = '&#9733;'; // Cambia esto al icono que prefieras
+
+let isTextChanging = false;
+
+const textArray = [
+    '¡Bienvenido!',
+    'Haz clic para cambiar el texto.'
+];
+
+let currentTextIndex = 0;
+
+function animateText() {
+    if (!isTextChanging) {
+        const currentText = textArray[currentTextIndex];
+        isTextChanging = true;
+
+        for (let i = 0; i <= currentText.length; i++) {
+            setTimeout(() => {
+                textElement.textContent = currentText.slice(0, i);
+
+                if (i === currentText.length) {
+                    setTimeout(() => {
+                        textElement.appendChild(blinkingIcon);
+                    }, 500);
+                }
+            }, 50 * i);
+        }
+
+        setTimeout(() => {
+            isTextChanging = false;
+            textElement.innerHTML = currentText; // Mostrar el texto completo
+            textElement.appendChild(blinkingIcon); // Añadir el icono al final
+        }, 50 * currentText.length + 1000);
+    }
+}
+
+function changeText() {
+    if (!isTextChanging) {
+        textElement.innerHTML = ''; // Limpia el contenido antes de cambiar
+        blinkingIcon.remove();
+        animateText();
+    }
+}
+
+// Detén la animación después de mostrar todo el texto
+function stopAnimation() {
+    textElement.innerHTML = textArray[currentTextIndex];
+    blinkingIcon.remove();
+}
+
+// Inicia la animación cuando se carga la página
+window.onload = animateText;
