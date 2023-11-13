@@ -219,32 +219,3 @@ function showResult() {
     window.location.href = "resultado.html";
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    const textElement = document.getElementById('animated-text-container');
-    const svgIcon = document.getElementById('Iconsvg');
-
-
-    // Función para cambiar el texto y aplicar la animación de fade-in
-    function changeTextOnClick() {
-        console.log("Clic en el contenedor de texto");
-        textElement.style.opacity = '0';
-
-        setTimeout(() => {
-            textElement.innerHTML = '¡Nuevo texto!';
-            textElement.style.opacity = '1';
-        }, 1000); // Ajusta este valor según tus preferencias de duración de la animación
-    }
-
-    // Función para manejar el clic en el icono SVG
-    function handleSvgClick() {
-        console.log("Clic en el icono SVG");
-        changeTextOnClick();
-    }
-
-    // Asigna la función al evento de clic en el contenedor
-    document.querySelector('.text-container').addEventListener('click', changeTextOnClick);
-
-    // Asigna la función al evento de clic en el icono SVG
-    svgIcon.addEventListener('click', handleSvgClick);
-});
