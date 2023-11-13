@@ -221,7 +221,6 @@ font-family: "Lucida Console", "Courier New", monospace;
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image: url('background-image.jpg'); /* Reemplaza con la URL de tu imagen de fondo */
     background-size: cover;
     overflow: hidden;
 }
@@ -269,77 +268,53 @@ font-family: "Lucida Console", "Courier New", monospace;
     font-size: 1.5rem;
 }
 
-/* Estilos para dispositivos móviles (Media Query) */
-@media (min-width: 768px) {
-    .container {
-        background-image: url('background-image-large.jpg'); /* Cambia la imagen de fondo para pantallas más grandes */
-    }
-    .overlay p {
-        font-size: 2rem; /* Tamaño de fuente más grande en pantallas más grandes */
-    }
-}
-
-
 
 .text-container {
     position: relative;
+    background-color: #00000069;
     color: white;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
     font-size: 1.5rem;
     max-width: 80%;
     margin: 0 auto;
-    padding: 20px; /* Agrega un espacio de relleno para mejorar la apariencia */
-    border-radius: 5px; /* Agrega esquinas redondeadas */
-    box-sizing: border-box; /* Incluye el espacio de relleno y el borde en el tamaño total */
+    padding: 20px;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    opacity: 1; /* Inicia con opacidad 0 para el fade in */
+    animation: fade-in 3s forwards; /* Aplica la animación de desvanecimiento */
 }
 
-
-#animated-text {
-    font-size: 1.5rem; /* Ajusta el tamaño de fuente según tus preferencias */
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border-right: 2px solid white;
-    white-space: nowrap;
-    animation: typing 3s steps(40) infinite, blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: white; }
-}
-
-.blinking-cursor {
-    animation: blink-caret 0.75s step-end infinite;
-}
-
-/* Estilo del icono */
-.blinking-icon {
-    font-size: 2rem; /* Ajusta el tamaño del icono */
-    color: yellow; /* Cambia el color del icono */
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); /* Agrega sombra al icono */
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50%, 100% {
+@keyframes fade-in {
+    from {
         opacity: 0;
     }
-    25%, 75% {
+    to {
         opacity: 1;
     }
 }
 
-.text-wrapper {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-sizing: border-box;
-    overflow: hidden; /* Evita que el texto se desborde */
+#animated-text {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    white-space: normal; /* Permite saltos de línea */
 }
+
+.fade-in-text {
+    opacity: 1;
+    transition: opacity 1s ease; /* Ajusta la duración y el efecto de la transición según tus preferencias */
+}
+
+
+svg{
+    padding-left: 40%;
+    padding-top: 2rem;
+    animation: blink 1.5s ease-in infinite;
+    cursor:pointer;
+}
+
+
+@keyframes blink {
+    from, to { opacity: 1 }
+    50% { opacity: 0 }
+  }

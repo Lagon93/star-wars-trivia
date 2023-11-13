@@ -219,56 +219,32 @@ function showResult() {
     window.location.href = "resultado.html";
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
-    const textElement = document.getElementById('animated-text');
-    const blinkingIcon = document.createElement('span');
-    blinkingIcon.className = 'blinking-icon';
-    blinkingIcon.innerHTML = '&#9733;'; // Cambia esto al icono que prefieras
+    const textElement = document.getElementById('animated-text-container');
+    const svgIcon = document.getElementById('Iconsvg');
 
-    const textArray = [
-        '¡Bienvenido!',
-        'Haz clic para cambiar el texto. Esta es una línea larga de texto que debería bajar a la siguiente línea si no cabe en el contenedor.'
-    ];
 
-    var animationInProgress = false;
+    // Función para cambiar el texto y aplicar la animación de fade-in
+    function changeTextOnClick() {
+        console.log("Clic en el contenedor de texto");
+        textElement.style.opacity = '0';
 
-    function animateText() {
-        if (animationInProgress) return;
-
-        const currentText = textArray[currentTextIndex];
-        const words = currentText.split(' ');
-        let index = 0;
-
-        function type() {
-            textElement.textContent = words.slice(0, index).join(' ');
-            index++;
-
-            if (index <= words.length) {
-                setTimeout(type, 50);
-            } else {
-                textElement.textContent = currentText; // Mostrar el texto completo
-                textElement.appendChild(blinkingIcon); // Añadir el icono al final
-                animationInProgress = false; // Marcar la animación como completa
-            }
-        }
-
-        animationInProgress = true; // Marcar que la animación está en progreso
-        type();
+        setTimeout(() => {
+            textElement.innerHTML = '¡Nuevo texto!';
+            textElement.style.opacity = '1';
+        }, 1000); // Ajusta este valor según tus preferencias de duración de la animación
     }
 
-    function changeText() {
-        if (animationInProgress) return; // Evitar cambiar el texto mientras la animación está en progreso
-
-        textElement.innerHTML = ''; // Limpia el contenido antes de cambiar
-        blinkingIcon.remove();
-        currentTextIndex = (currentTextIndex + 1) % textArray.length;
-        animateText();
+    // Función para manejar el clic en el icono SVG
+    function handleSvgClick() {
+        console.log("Clic en el icono SVG");
+        changeTextOnClick();
     }
 
-    // Inicia la animación cuando se carga la página
-    animateText();
+    // Asigna la función al evento de clic en el contenedor
+    document.querySelector('.text-container').addEventListener('click', changeTextOnClick);
 
-    // Detiene la animación cuando el usuario hace clic
-    textElement.addEventListener('click', changeText);
+    // Asigna la función al evento de clic en el icono SVG
+    svgIcon.addEventListener('click', handleSvgClick);
 });
-
