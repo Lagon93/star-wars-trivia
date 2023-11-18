@@ -201,7 +201,7 @@ function checkAnswer(index, preguntas) {
         answerButtons[index].style.backgroundColor = " rgba(255, 61, 56, 0.48)";
 
         const retryButton = document.createElement("button");
-        retryButton.textContent = "Volver a Intentar";
+        retryButton.textContent = "Tornar a Intentar";
         retryButton.onclick = () => {
             answerButtons.forEach((button) => {
                 button.disabled = false;
